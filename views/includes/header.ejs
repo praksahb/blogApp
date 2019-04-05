@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Blog App</title>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/app.css">
+    </head>
+    <body>
+        <div class="ui fixed inverted menu">
+            <div class="ui container">
+                <% if( typeof user === 'undefined') { %>
+                    <div class="header item">
+                            <i class="code icon"></i>
+                            Blog Site
+                        </div>
+                        <a class="item" href="/register">Sign up</a>
+                        <a class="item" href="/login">Login</a>
+                <% } else { %>
+                    <div class="header item">
+                        <div class="item"><%= user %></div>
+                        <a class="item" href="/blogs">Home</a>
+                        <a class="item" href="/blogs/new">Create new blog</a>
+                    </div>
+                    <div class="right menu">
+                        <a class="ui item" href="/logout">Logout</a>
+                    </div>
+                <% } %>
+            </div>
+        </div>

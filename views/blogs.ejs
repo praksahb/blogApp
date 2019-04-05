@@ -1,0 +1,16 @@
+<% include ./includes/header %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">
+        List of Blogs
+    </div>
+    <% blogs.forEach((blog) => { %>
+        <div>
+            <h2><%= blog.title %></h2>
+            <span>Author: <%= blog.createdBy %></span>
+            <p><%= blog.body %></p>
+        </div>
+    <% }); %>
+</div>
+
+<% include ./includes/footer %>

@@ -42,12 +42,9 @@ passport.deserializeUser(User.deserializeUser());
 const homeRoute = require('./routes/home'); 
 app.use(homeRoute);
 
-const registerRoute = require('./routes/register');
-app.use(registerRoute);
-
-//compress login, logout and possibly register routes into a single file called userAuth or something
-const loginRoute = require('./routes/login');
-app.use(loginRoute); 
+//controls all routes for logging, logout and signup-register
+const userRoute = require('./routes/user');
+app.use(userRoute); 
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`App listening on ${port}`));

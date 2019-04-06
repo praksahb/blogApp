@@ -20,6 +20,7 @@ exports.createBlogIndex = (req, res, next) => {
 };
 //post new blog post created to db-
 exports.postBlogIndex = (req, res, next) => {
+    req.body.blog.body = req.sanitize(req.body.blog.body);
     //create Blogpost
     Blog.create(req.body.blog, (err, newBlog) => {
         if(err) {
@@ -61,6 +62,7 @@ exports.editBlogIndex = (req, res, next) => {
 };
 //update blog
 exports.putEditedBlogIndex = (req, res, next) => {
+    req.body.blog.body = req.sanitize(req.body.blog.body);
     //checks if update is being done by owner
     if(req.user.name === req.body.blog.createdBy) {
         Blog.findOneAndUpdate({_id: req.params.id}, req.body.blog, (err, updatedBlog) => {
@@ -83,10 +85,7 @@ exports.deleteBlogIndex = (req, res, next) => {
             console.log(err);
             res.redirect('/blogs');
         } else if(req.user.name === foundBlog.createdBy) {
-            foundBlog.remove((error, removedBlog) => {
-                //res.send({ data: removedBlog });
-                //res.redirect('/blogs');
-            });
+            foundBlog.remove();
         }
         res.redirect('/blogs');
     });

@@ -1,0 +1,28 @@
+<% include ./includes/header %>
+
+<div class="ui main text container">
+    <div class="ui huge header">List of Blogs</div>
+    <div class="ui top attached segment">
+        <div class="ui divided items">
+            <% blogs.forEach((blog) => { %>
+                <div class="item">
+                    <div class="content">
+                        <a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+                        <div class="meta">
+                            <span>Author: <%= blog.createdBy %></span>
+                        </div>
+                        <div class="description">
+                            <p><%- blog.body.substring(0, 20) %>...</p>
+                        </div>
+                        <div class="extra">
+                            <a class="ui floated small basic button" href="/blogs/<%= blog._id %>">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+    
+</div>
+
+<% include ./includes/footer %>

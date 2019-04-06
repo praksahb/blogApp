@@ -16,8 +16,8 @@ exports.postRegisterIndex = (req, res, next) => {
             console.log(err);
             return res.render('register');
         }
-        passport.authenticate("local")(req, res, function(){
-           res.redirect("/");
+        passport.authenticate("local")(req, res, () => {
+           res.redirect("/login");
         });
     });
 }
@@ -32,7 +32,7 @@ exports.getLoginIndex = (req, res, next) => {
 };
 //route controller-callback function for login authentication
 exports.postLoginIndex = (req, res, next) => {
-    //middleware.passAuth currently redirects to home.js page
+    //middleware.passAuth currently redirects
 };
 //route controller for logout
 exports.logoutIndex = (req, res, next) => {

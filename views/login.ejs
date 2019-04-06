@@ -1,0 +1,22 @@
+<% include ./includes/header %>
+
+<div class="ui main text container segment">
+        <div class="ui huge header">
+            Login
+        </div>
+    <form class="ui equal width large form" action="/login" method="POST">
+        <div class="two fields">
+            <div class="field">
+                <label>Username</label>
+                <input type="text" name="username" placeholder="username">
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="password">
+            </div>
+        </div>
+        <button class="ui primary button">Submit</button>
+    </form>
+</div>
+
+<% include ./includes/footer %>

@@ -3,6 +3,7 @@ const express               = require('express');
       dotenv                = require('dotenv'),
       path                  = require('path'),
       bodyParser            = require('body-parser'),
+      methodOverride        = require('method-override'),
       mongoose              = require('mongoose'),
       passport              = require("passport"),
       User                  = require('./models/user'),
@@ -27,6 +28,8 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride('_method'));
+
 //setting up authentication 
 app.use(require('express-session')({
     secret: process.env.SESSION_SECRET,
